@@ -6,16 +6,20 @@ Målet med denna uppgift är att skapa och implementera en fullständig CI/CD-ke
     API:et ska ha minst två endpoints (kan läggas till under utvecklingen ). En för att kryptera och en för att avkryptera. Krypteringsmedtod får du bestämma själv och behöver inte vara säker. ( ex: rövarspråket, caesar-chiffer).
 
 -- Github
+
     Git och github användas under hela projektet och all kod skrivs i branches och mergas med hjälp av pull requests.
 
 -- Publicering
+
     Api:et publiceras på AWS elastic beanstalk med hjällp av Github Actions.
 
 -- Enhetstest (Xunit)
+
     Ytterligare funktionalitet utföras med hjälp av Github Actions. tex enhetstest
 
 
 -- CI/CD proces skiss i Figma 
+
     Skissen beskriver CI/CD processen för både backend och frontend till appen. (Frontend behöver inte implementeras). Visualisera hur och när koden går igenom olika steg i CI/CD-kedjan, inklusive bygge, testning och distribution.
 
 
