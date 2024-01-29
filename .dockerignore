@@ -1,0 +1,32 @@
+# .NET
+bin/
+obj/
+artifacts/
+*.user
+*.suo
+*.pdb
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+.vs/
+*.vscode/
+*.sln.docstates
+*.suo
+*.user
+*.userosscache
+*.suo.user
+
+# Rider
+.idea/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+
+# macOS
+.DS_Store
+
+# Linux
+.vscode-test/
