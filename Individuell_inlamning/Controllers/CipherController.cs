@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
 
-namespace Individuell_inlamning.Controllers
+namespace Individuell_inlamning.Controllers // test för kommit
 {
     [Route("api/[controller]")]
     [ApiController]
