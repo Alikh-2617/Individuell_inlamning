@@ -24,4 +24,4 @@ jobs:
         run: dotnet build
 
       - name: Run Xunit Test
-        run: dotnet test
+        run: dotnet test ./XunitTest/XunitTest.csproj
