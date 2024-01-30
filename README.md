@@ -20,9 +20,10 @@ Målet med denna uppgift är att skapa och implementera en fullständig CI/CD-ke
 
 
 -- CI/CD proces skiss i Figma 
-
-    Skissen beskriver CI/CD processen för både backend och frontend till appen. (Frontend behöver inte implementeras). Visualisera hur och när koden går igenom olika steg i CI/CD-kedjan, inklusive bygge, testning och distribution.
-    Länk : 
+- Skissen beskriver CI/CD processen för både backend och frontend till appen. (Frontend behöver inte implementeras). Visualisera hur  
+  och när koden går igenom olika steg i CI/CD-kedjan, inklusive bygge, testning och distribution.
+  Länk : 
+  
     https://www.figma.com/file/H5fgtvrB0GaJcYuup8asmP/Individuell-examination-CI%2FCD?type=whiteboard&node-id=0-1&t=ufFLGdHzdHbnv6fi-0
 
 -- Docker image (Docker hub)
