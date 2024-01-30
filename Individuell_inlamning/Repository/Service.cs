@@ -5,18 +5,33 @@ namespace Individuell_inlamning.Repository
 {
     public class Service : IService
     {
-        private readonly List<Model> models = new List<Model>(); 
+        private static List<Model> models = new List<Model>(); 
 
-        public string Decrypt(Model model)
+        public string? Decrypt(ModelDto modelDto)
         {
             foreach (var item in models)
             {
-                if(item.Name == model.Name)
+                if(item.Name == modelDto.Name)
                 {
-                    return Encrypt(new Model { Name = model.Name, Text = model.Text, key = 26 - item.key});
+                    string result = "";
+                    Model model = new Model { Name = modelDto.Name, Text = modelDto.Text, key = 26 - item.key };
+
+                    foreach (char ch in model.Text)
+                    {
+                        if (char.IsLetter(ch))
+                        {
+                            char offset = char.IsUpper(ch) ? 'A' : 'a';
+                            result += (char)((ch + model.key - offset) % 26 + offset);
+                        }
+                        else
+                        {
+                            result += ch;
+                        }
+                    }
+                    return result;
                 }
             }
-            return ("användare hittades inte , vi kan inte ge decryptade informationen ! ");
+            return null;
         }
 
         public string Encrypt(Model model)
@@ -36,6 +51,7 @@ namespace Individuell_inlamning.Repository
                 }
             }
 
+            models.Add(new Model { Name = model.Name, Text = model.Text, key = model.key});
             return result;
         }
     }

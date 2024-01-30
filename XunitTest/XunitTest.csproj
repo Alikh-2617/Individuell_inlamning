@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Individuell_inlamning\Individuell_inlamning.csproj" />
+  </ItemGroup>
+
 </Project>

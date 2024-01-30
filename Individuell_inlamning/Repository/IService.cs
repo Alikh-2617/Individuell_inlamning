@@ -3,6 +3,6 @@
     public interface IService
     {
         public string Encrypt(Model model); 
-        public string Decrypt(Model model);
+        public string? Decrypt(ModelDto model);
     }
 }

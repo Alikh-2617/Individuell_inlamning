@@ -9,39 +9,33 @@ namespace Individuell_inlamning.Controllers
     [ApiController]
     public class CipherController : ControllerBase
     {
-        private readonly IService _service;
-
-        public CipherController(IService service)
-        {
-            _service = service;
-        }
+        protected Service service = new Service();
 
         [HttpPost("encrypt")]
         public ActionResult<string> Encrypt(Model model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                string cypher_text = _service.Encrypt(model);
+                string cypher_text = service.Encrypt(model);
                 return Ok(cypher_text);
             }
-            catch (Exception ex)
-            {
-                return BadRequest("det har händ något fel !");
-            }
+            return BadRequest("Det har hänt någor fel, försöt igen !");
         }
 
         [HttpPost("decrypt")]
-        public ActionResult<string> Decrypt(Model model)
+        public ActionResult<string> Decrypt(ModelDto model)
         {
-            try
+            if (ModelState.IsValid)
             {
-                string text = _service.Decrypt(model);
-                return Ok(text);
+                string text = service.Decrypt(model)!;
+                if(text != null)
+                {
+                    return Ok(text);
+                }
+                return BadRequest("Användare hittades inte, vi kan inte dekryptera den!");
             }
-            catch(Exception ex)
-            {
-                return BadRequest("det har händ något fel !");
-            }
+            return BadRequest("det har händ något fel, ");
+
         }
     }
 }
