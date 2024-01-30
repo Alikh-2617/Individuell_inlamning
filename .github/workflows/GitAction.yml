@@ -1,0 +1,27 @@
+name: Run Xunit Text
+on: 
+  push:
+    branches:
+      - Xunit_Dev
+
+jobs:
+  Test:
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up .Net Env
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
+
+      - name: Restore dependencies (for att sln file ligger i root behöver vi inte ge nån path address)
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build
+
+      - name: Run Xunit Test
+        run: dotnet test ./XunitTest/XunitTest.csproj
