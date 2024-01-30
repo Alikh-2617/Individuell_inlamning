@@ -17,7 +17,7 @@ jobs:
         with:
           dotnet-version: '6.x'
 
-      - name: Restore dependencies 
+      - name: Restore dependencies (for att sln file ligger i root behöver vi inte ge nån path address)
         run: dotnet restore
 
       - name: Build
