@@ -1,21 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Individuell_inlamning.Repository;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Individuell_inlamning.Controllers
 {
     public class KrypteringController : ControllerBase
     {
-        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IService _service;
+        
 
-        public KrypteringController(ILogger<WeatherForecastController> logger)
+        public KrypteringController( IService service )
         {
-            _logger = logger;
+            _service = service;
         }
 
 
 
-        //public IActionResult Index()
-        //{
-        //    return ;
-        //}
     }
 }
