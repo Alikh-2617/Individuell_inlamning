@@ -10,13 +10,18 @@ Målet med denna uppgift är att skapa och implementera en fullständig CI/CD-ke
 
     Git och github användas under hela projektet och all kod skrivs i branches och mergas med hjälp av pull requests.
 
--- Publicering
+-- Publicering & build
+   Api:et publiceras på AWS elastic beanstalk med hjällp av Github Actions.
 
-    Api:et publiceras på AWS elastic beanstalk med hjällp av Github Actions.
+    dotnet restore
+    dotnet build
+    dotnet run
 
 -- Enhetstest (Xunit)
+   Ytterligare funktionalitet utföras med hjälp av Github Actions. tex enhetstest
 
-    Ytterligare funktionalitet utföras med hjälp av Github Actions. tex enhetstest
+    cd ./XunitTest
+    dotnet test
 
 
 -- CI/CD proces skiss i Figma 
