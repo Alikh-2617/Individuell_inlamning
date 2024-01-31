@@ -7,8 +7,16 @@ namespace Individuell_inlamning
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             // Add services to the container.
+
+            builder.Services.AddCors(
+            x => x.AddPolicy("corsPolicy", builder =>
+                {
+                    builder.WithOrigins("*").
+                    AllowAnyMethod().
+                    AllowAnyHeader();
+                }));
+
             // builder.Services.AddScoped<IService, Service>();    
 
             builder.Services.AddControllers();
@@ -17,6 +25,8 @@ namespace Individuell_inlamning
 
             var app = builder.Build();
 
+            app.UseCors("corsPolicy");
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -24,10 +34,7 @@ namespace Individuell_inlamning
             }
 
             app.UseHttpsRedirection();
-
             app.UseAuthorization();
-
-
             app.MapControllers();
 
             app.Run();

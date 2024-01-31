@@ -5,7 +5,7 @@ using System.Security.Cryptography;
 
 namespace Individuell_inlamning.Controllers // test för kommit
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class CipherController : ControllerBase
     {
@@ -35,7 +35,12 @@ namespace Individuell_inlamning.Controllers // test för kommit
                 return BadRequest("Användare hittades inte, vi kan inte dekryptera den!");
             }
             return BadRequest("det har händ något fel, ");
+        }
 
+        [HttpGet("Get")]
+        public ActionResult Get()
+        {
+            return Ok("hello world");
         }
     }
 }
