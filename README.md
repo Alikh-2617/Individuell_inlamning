@@ -4,13 +4,13 @@ Målet med denna uppgift är att skapa och implementera en fullständig CI/CD-ke
 
 -- Clone projekt (Github Repo)
 
-    git clone https://github.com/Alikh-2617/WebApplication03.git
+    git clone https://github.com/Alikh-2617/Individuell_inlamning.git
 
 
 -- Docker image (Docker hub)
 -- För att få imagen :
 
-    docker pull alikhavari2617/Individuell_inlamning:latest
+    docker pull alikhavari2617/individuell_inlamning:latest
 
 
 -- API
