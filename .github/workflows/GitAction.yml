@@ -51,7 +51,6 @@ jobs:
 
   Push_To_AWS_Elastic_Beanstalk:
     runs-on: ubuntu-latest
-    needs: Test
     needs: Create_igame_&_push_To_DockerHub
 
     steps:
