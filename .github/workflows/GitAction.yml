@@ -45,9 +45,9 @@ jobs:
         run: docker login -u ${{secrets.USER }} -p ${{ secrets.PASS }}
  
       - name: Build and push docker image
-        run: docker build -t alikhavari2617/Individuell_inlamning .
+        run: docker build -t alikhavari2617/individuell_inlamning .
       - name: push image
-        run: docker push alikhavari2617/Individuell_inlamning
+        run: docker push alikhavari2617/individuell_inlamning
 
   publish-to-aws:
     runs-on: ubuntu-latest
