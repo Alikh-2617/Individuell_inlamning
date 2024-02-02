@@ -35,7 +35,7 @@ namespace Individuell_inlamning
 
             app.UseHttpsRedirection();
 
-            app.MapGet("/", ()=> "Hello world !");
+            app.MapGet("/", ()=> "Hello world ! ");
             app.MapControllers();
 
             app.Run();
