@@ -5,7 +5,7 @@ on:
       - Xunit_Dev
 
 jobs:
-  Test:
+  test:
     
     runs-on: ubuntu-latest
 
@@ -25,3 +25,57 @@ jobs:
 
       - name: Run Xunit Test
         run: dotnet test ./XunitTest/XunitTest.csproj
+
+  publish-to-docker:
+    runs-on: ubuntu-latest
+    needs: test
+
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Set up .net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
+      - name: Restore and build
+        run: |
+          dotnet restore
+          dotnet build
+      - name: Login to dockerhub
+        run: docker login -u ${{secrets.USER }} -p ${{ secrets.PASS }}
+ 
+      - name: Build and push docker image
+        run: docker build -t alikhavari2617/individuell_inlamning .
+      - name: push image
+        run: docker push alikhavari2617/individuell_inlamning
+
+  publish-to-aws:
+    runs-on: ubuntu-latest
+    needs: publish-to-docker
+
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Set up .net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
+      - name: Restore and build
+        run: dotnet restore
+          
+      - name: Create Publish file
+        run: dotnet publish -o app
+      
+      - name: Create zip dir
+        run: cd app; zip ../app.zip *;
+
+      - name: Deploy to AWS EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_KEY_FOR_GITHUB}}
+          aws_secret_key: ${{ secrets.AWS_KEY_FOR_GITHUB_PASS }}
+          application_name: BackendAPI
+          environment_name: BackendAPI-env
+          version_label: ${{ github.run_id }}
+          region: eu-north-1
+          deployment_package: app.zip
