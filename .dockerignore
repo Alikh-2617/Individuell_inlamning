@@ -19,6 +19,8 @@ packages/
 node_modules/
 bower_components/
 
+
+
 # Ignorera redigerbara filer
 *.swp
 *.suo
@@ -26,3 +28,4 @@ bower_components/
 *.bak
 *.cache
 *.log
+
