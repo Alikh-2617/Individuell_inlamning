@@ -1,142 +1,26 @@
-# Binära filer
-*.exe
+# Ignore .NET build artifacts
+bin/
+obj/
 *.dll
 *.pdb
-
-# Verktyg och anpassade filer
-obj/
-bin/
-artifacts/
-
-# Visual Studio Code
-.vscode/
-
-# Visual Studio
-.vs/
-*.vscode/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Rider
-.idea/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-
-# macOS
-.DS_Store
-
-# Linux
-.vscode-test/
-
-# GitHub Actions
-/.github/workflows/
-# Binära filer
 *.exe
-*.dll
-*.pdb
+*.json
 
-# Verktyg och anpassade filer
-obj/
-bin/
-artifacts/
-
-# Visual Studio Code
+# Ignore Visual Studio specific files and folders
+.vs/
 .vscode/
 
-# Visual Studio
-.vs/
-*.vscode/
+# Ignore package management folders
+packages/
+node_modules/
+bower_components/
+
+# Ignore user-specific files
 *.suo
 *.user
-*.userosscache
-*.sln.docstates
+*.bak
+*.cache
+*.log
 
-# Rider
-.idea/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-
-# macOS
-.DS_Store
-
-# Linux
-.vscode-test/
-
-# Binära filer
-*.exe
-*.dll
-*.pdb
-
-# Verktyg och anpassade filer
-obj/
-bin/
-artifacts/
-
-# Visual Studio Code
-.vscode/
-
-# Visual Studio
-.vs/
-*.vscode/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Rider
-.idea/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-
-# macOS
-.DS_Store
-
-# Linux
-.vscode-test/
-
-# GitHub Actions
-/.github/workflows/
-# Binära filer
-*.exe
-*.dll
-*.pdb
-
-# Verktyg och anpassade filer
-obj/
-bin/
-artifacts/
-
-# Visual Studio Code
-.vscode/
-
-# Visual Studio
-.vs/
-*.vscode/
-*.suo
-*.user
-*.userosscache
-*.sln.docstates
-
-# Rider
-.idea/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-
-# macOS
-.DS_Store
-
-# Linux
-.vscode-test/
-
-# GitHub Actions
-/.github/workflows/
+# Ignore GitHub Actions workflow files
+.github/workflows/

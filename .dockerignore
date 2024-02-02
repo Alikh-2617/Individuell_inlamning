@@ -1,32 +1,28 @@
-# .NET
-bin/
-obj/
-artifacts/
-*.user
-*.suo
-*.pdb
+# Ignorera .NET-projektets byggfiler
+**/bin/
+**/obj/
+**/*.dll
+**/*.pdb
+**/*.exe
+**/*.json
 
-# Visual Studio Code
+# Ignorera enhetstestfiler
+**/TestResults/
+**/coverage/
+
+# Ignorera Visual Studio-konfigurationsfiler
+.vs/
 .vscode/
 
-# Visual Studio
-.vs/
-*.vscode/
-*.sln.docstates
+# Ignorera paketfiler och kataloger som skapas av pakethanterare
+packages/
+node_modules/
+bower_components/
+
+# Ignorera redigerbara filer
+*.swp
 *.suo
 *.user
-*.userosscache
-*.suo.user
-
-# Rider
-.idea/
-
-# Windows
-Thumbs.db
-ehthumbs.db
-
-# macOS
-.DS_Store
-
-# Linux
-.vscode-test/
+*.bak
+*.cache
+*.log

@@ -34,7 +34,8 @@ namespace Individuell_inlamning
             }
 
             app.UseHttpsRedirection();
-            app.UseAuthorization();
+
+            app.MapGet("/", ()=> "Hello world !");
             app.MapControllers();
 
             app.Run();
