@@ -16,7 +16,7 @@ namespace Individuell_inlamning.Repository
                     string result = "";
                     if (modelDto.Text == null)
                     {
-                        return item.Text.ToString();
+                        return $"Hej ! vilken {modelDto.Name} är du ? ";
                     }
 
                     // bara koda lite för att inte har tråkigt !!
