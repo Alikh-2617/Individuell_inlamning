@@ -14,8 +14,13 @@ namespace Individuell_inlamning.Repository
                 if(item.Name == modelDto.Name)
                 {
                     string result = "";
-                    Model model = new Model { Name = modelDto.Name, Text = modelDto.Text, key = 26 - item.key };
+                    if (modelDto.Text == null)
+                    {
+                        return item.Text.ToString();
+                    }
 
+                    // bara koda lite för att inte har tråkigt !!
+                    Model model = new Model { Name = modelDto.Name, Text = modelDto.Text, key = 26 - item.key };
                     foreach (char ch in model.Text)
                     {
                         if (char.IsLetter(ch))
@@ -28,6 +33,7 @@ namespace Individuell_inlamning.Repository
                             result += ch;
                         }
                     }
+
                     return result;
                 }
             }
