@@ -74,8 +74,8 @@
   #       with:
   #         aws_access_key: ${{ secrets.AWS_KEY_FOR_GITHUB}}
   #         aws_secret_key: ${{ secrets.AWS_KEY_FOR_GITHUB_PASS }}
-  #         application_name: BackendAPI
-  #         environment_name: BackendAPI-env
+  #         application_name: BackendAPI-1
+  #         environment_name: BackendAPI-1-env
   #         version_label: ${{ github.run_id }}
   #         region: eu-north-1
   #         deployment_package: app.zip
