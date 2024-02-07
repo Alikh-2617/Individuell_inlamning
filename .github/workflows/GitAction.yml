@@ -1,81 +1,86 @@
-# name: Run Xunit Text
-# on: 
-#   push:
-#     branches:
-#       - main
+name: Run Xunit Text
+on: 
+  push:
+    branches:
+      - main
 
-# jobs:
-#   test:
+jobs:
+  test:
     
-#     runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - uses: actions/checkout@v3
+    steps:
+      - uses: actions/checkout@v3
 
-#       - name: Set up .Net Env
-#         uses: actions/setup-dotnet@v3
-#         with:
-#           dotnet-version: '6.x'
+      - name: Set up .Net Env
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
 
-#       - name: Restore dependencies (for att sln file ligger i root behöver vi inte ge nån path address)
-#         run: dotnet restore
+      - name: Restore dependencies (for att sln file ligger i root behöver vi inte ge nån path address)
+        run: dotnet restore
 
-#       - name: Build
-#         run: dotnet build
+      - name: Build
+        run: dotnet build
 
-#       - name: Run Xunit Test
-#         run: dotnet test ./XunitTest/XunitTest.csproj
+      - name: Run Xunit Test
+        run: dotnet test ./XunitTest/XunitTest.csproj
 
-#   publish-to-docker:
-#     runs-on: ubuntu-latest
-#     needs: test
+  publish-to-docker:
+    runs-on: ubuntu-latest
+    needs: test
 
-#     steps:
-#       - name: Checkout respository
-#         uses: actions/checkout@v3
-#       - name: Set up .net
-#         uses: actions/setup-dotnet@v3
-#         with:
-#           dotnet-version: '6.x'
-#       - name: Restore and build
-#         run: |
-#           dotnet restore
-#           dotnet build
-#       - name: Login to dockerhub
-#         run: docker login -u ${{secrets.USER }} -p ${{ secrets.PASS }}
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Set up .net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
+      - name: Restore and build
+        run: |
+          dotnet restore
+          dotnet build
+      - name: Login to dockerhub
+        run: docker login -u ${{secrets.USER }} -p ${{ secrets.PASS }}
+
+      - name: put taggs
+        id: version
+        run: echo "::set-output name=TAG::$(date +'%Y%m%d%H%M%S')"
  
-#       - name: Build and push docker image
-#         run: docker build -t alikhavari2617/individuell_inlamning .
-#       - name: push image
-#         run: docker push alikhavari2617/individuell_inlamning
+      - name: Build and push docker image
+        run: docker build -t alikhavari2617/individuell_inlamning:${{ steps.version.outputs.TAG }} .
 
-  # publish-to-aws:
-  #   runs-on: ubuntu-latest
-  #   needs: publish-to-docker
+      - name: push image
+        run: docker push alikhavari2617/individuell_inlamning:${{ steps.version.outputs.TAG }}
 
-  #   steps:
-  #     - name: Checkout respository
-  #       uses: actions/checkout@v3
-  #     - name: Set up .net
-  #       uses: actions/setup-dotnet@v3
-  #       with:
-  #         dotnet-version: '6.x'
-  #     - name: Restore and build
-  #       run: dotnet restore
+  publish-to-aws:
+    runs-on: ubuntu-latest
+    needs: publish-to-docker
+
+    steps:
+      - name: Checkout respository
+        uses: actions/checkout@v3
+      - name: Set up .net
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.x'
+      - name: Restore and build
+        run: dotnet restore
           
-  #     - name: Create Publish file
-  #       run: dotnet publish -o app
+      - name: Create Publish file
+        run: dotnet publish -o app
       
-  #     - name: Create zip dir
-  #       run: cd app; zip ../app.zip *;
+      - name: Create zip dir
+        run: cd app; zip ../app.zip *;
 
-  #     - name: Deploy to AWS EB
-  #       uses: einaregilsson/beanstalk-deploy@v21
-  #       with:
-  #         aws_access_key: ${{ secrets.AWS_KEY_FOR_GITHUB}}
-  #         aws_secret_key: ${{ secrets.AWS_KEY_FOR_GITHUB_PASS }}
-  #         application_name: BackendAPI-1
-  #         environment_name: BackendAPI-1-env
-  #         version_label: ${{ github.run_id }}
-  #         region: eu-north-1
-  #         deployment_package: app.zip
+      - name: Deploy to AWS EB
+        uses: einaregilsson/beanstalk-deploy@v21
+        with:
+          aws_access_key: ${{ secrets.AWS_KEY_FOR_GITHUB}}
+          aws_secret_key: ${{ secrets.AWS_KEY_FOR_GITHUB_PASS }}
+          application_name: BackendAPI-1
+          environment_name: BackendAPI-1-env
+          version_label: ${{ github.run_id }}
+          region: eu-north-1
+          deployment_package: app.zip
