@@ -9,23 +9,20 @@ namespace Individuell_inlamning
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
 
-            // builder.Services.AddCors(
-            // x => x.AddPolicy("corsPolicy", builder =>
-            //     {
-            //         builder.WithOrigins("*").
-            //         AllowAnyMethod().
-            //         AllowAnyHeader();
-            //     }));
+            builder.Services.AddCors(policyBuilder =>
+            policyBuilder.AddDefaultPolicy(policy =>
+            policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
+);
 
             // builder.Services.AddScoped<IService, Service>();    
 
             builder.Services.AddControllers();
-            builder.Services.AddEndpointsApiExplorer();
+            // builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            // app.UseCors("corsPolicy");
+            app.UseCors();
 
             if (app.Environment.IsDevelopment())
             {
