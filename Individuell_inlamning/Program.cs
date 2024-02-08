@@ -35,7 +35,8 @@ namespace Individuell_inlamning
 
             app.UseHttpsRedirection();
 
-            app.MapGet("/", ()=> "Hello world ! ");
+            app.MapGet("/", ()=> "Hej !! \nvi har två funktioner för att kryptera och dekryptera lössen ord med en nycker vilken är siffra och ett namn och lössenordet som ska krypteras ,"+
+            " för att dekryptera lössen ordet bör du säga ditt namn och kryperade lössen ordet ! \nLycka till !");
             app.MapControllers();
 
             app.Run();
