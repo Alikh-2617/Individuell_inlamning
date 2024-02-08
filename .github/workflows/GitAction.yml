@@ -2,7 +2,7 @@ name: Run Xunit Text
 on: 
   push:
     branches:
-      - main
+      - master
 
 jobs:
   test:
