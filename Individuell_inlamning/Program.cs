@@ -36,7 +36,9 @@ namespace Individuell_inlamning
             app.UseHttpsRedirection();
 
             app.MapGet("/", ()=> "Hej !! \nvi har två funktioner för att kryptera och dekryptera lössen ord med en nycker vilken är siffra och ett namn och lössenordet som ska krypteras ,"+
-            " för att dekryptera lössen ordet bör du säga ditt namn och kryperade lössen ordet ! \nLycka till !");
+            " för att dekryptera lössen ordet bör du säga ditt namn och kryperade lössen ordet ! \n\n\tHost Domain/encrypt => { string:namn ID, string:lössenord, int:key } för att krypera lösenordet "+
+            "\n\n\tHost Domain/decrypt => {string:name ID, string:krypterade } för att krypera lösenordet "+
+            "\n\n\tLycka till !");
             app.MapControllers();
 
             app.Run();
