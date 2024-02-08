@@ -9,13 +9,13 @@ namespace Individuell_inlamning
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
 
-            builder.Services.AddCors(
-            x => x.AddPolicy("corsPolicy", builder =>
-                {
-                    builder.WithOrigins("*").
-                    AllowAnyMethod().
-                    AllowAnyHeader();
-                }));
+            // builder.Services.AddCors(
+            // x => x.AddPolicy("corsPolicy", builder =>
+            //     {
+            //         builder.WithOrigins("*").
+            //         AllowAnyMethod().
+            //         AllowAnyHeader();
+            //     }));
 
             // builder.Services.AddScoped<IService, Service>();    
 
@@ -25,7 +25,7 @@ namespace Individuell_inlamning
 
             var app = builder.Build();
 
-            app.UseCors("corsPolicy");
+            // app.UseCors("corsPolicy");
 
             if (app.Environment.IsDevelopment())
             {
@@ -33,11 +33,11 @@ namespace Individuell_inlamning
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            // app.UseHttpsRedirection();
 
             app.MapGet("/", ()=> "Hej !! \nvi har två funktioner för att kryptera och dekryptera lössen ord med en nycker vilken är siffra och ett namn och lössenordet som ska krypteras ,"+
-            " för att dekryptera lössen ordet bör du säga ditt namn och kryperade lössen ordet ! \n\n\tHost Domain/encrypt => { string:namn ID, string:lössenord, int:key } för att krypera lösenordet "+
-            "\n\n\tHost Domain/decrypt => {string:name ID, string:krypterade } för att krypera lösenordet "+
+            " för att dekryptera lössen ordet bör du säga ditt namn och kryperade lössen ordet ! \n\n\n\tHost Domain/Cipher/encrypt => { string:namn ID, string:lössenord, int:key } för att krypera lösenordet "+
+            "\n\n\tHost Domain/Cipher/decrypt => {string:name ID, string:krypterade } för att krypera lösenordet "+
             "\n\n\tLycka till !");
             app.MapControllers();
 
