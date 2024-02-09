@@ -1,4 +1,4 @@
-name: Run Xunit Text
+name: Run to publish the application
 on: 
   push:
     branches:
