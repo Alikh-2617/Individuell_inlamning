@@ -9,20 +9,22 @@ namespace Individuell_inlamning
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
 
-            builder.Services.AddCors(policyBuilder =>
-            policyBuilder.AddDefaultPolicy(policy =>
-            policy.WithOrigins("*").AllowAnyHeader().AllowAnyHeader())
-);
-
+            builder.Services.AddCors( x => x.AddPolicy( "corsPolicy", 
+            builder => { 
+                builder.WithOrigins("*").  // Alla är välkomna :) 
+                AllowAnyMethod().
+                AllowAnyHeader();
+                }));
             // builder.Services.AddScoped<IService, Service>();    
 
             builder.Services.AddControllers();
-            // builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
-            app.UseCors();
+            app.UseCors("corsPolicy");
+
 
             if (app.Environment.IsDevelopment())
             {
@@ -30,7 +32,7 @@ namespace Individuell_inlamning
                 app.UseSwaggerUI();
             }
 
-            // app.UseHttpsRedirection();
+            app.UseHttpsRedirection();
 
             app.MapGet("/", ()=> "Hej !! \nvi har två funktioner för att kryptera och dekryptera lössen ord med en nycker vilken är siffra och ett namn och lössenordet som ska krypteras ,"+
             " för att dekryptera lössen ordet bör du säga ditt namn och kryperade lössen ordet ! \n\n\n\tHost Domain/Cipher/encrypt => { string:namn ID, string:lössenord, int:key } för att krypera lösenordet "+

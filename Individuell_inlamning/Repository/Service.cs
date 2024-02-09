@@ -14,12 +14,12 @@ namespace Individuell_inlamning.Repository
                 if(item.Name == modelDto.Name)
                 {
                     string result = "";
-                    if (modelDto.Text == null)
-                    {
-                        return $"Hej ! vilken {modelDto.Name} är du ? ";
-                    }
+                    //if (modelDto.Text == null)
+                    //{
+                    //    return $"Hej ! vilken {modelDto.Name} är du ? ";
+                    //}
 
-                    // bara koda lite för att inte har tråkigt !!
+                    //// bara koda lite för att inte har tråkigt !!
                     Model model = new Model { Name = modelDto.Name, Text = modelDto.Text, key = 26 - item.key };
                     foreach (char ch in model.Text)
                     {
